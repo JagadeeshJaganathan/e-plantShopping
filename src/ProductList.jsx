@@ -267,6 +267,8 @@ function ProductList({ onHomeClick }) {
         }));
       };
     
+const dispatch = useDispatch();
+
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -307,12 +309,15 @@ function ProductList({ onHomeClick }) {
           {/* Display other plant details like description and cost */}
           <div className="product-description">{plant.description}</div> {/* Display plant description */}
           <div className="product-cost">${plant.cost}</div> {/* Display plant cost */}
-          <button
-            className="product-button"
-            onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
-          >
-            Add to Cart
-          </button>
+          
+<button
+  className="product-button"
+  onClick={() => handleAddToCart(plant)}
+  disabled={addedToCart[plant.name]}
+>
+  {addedToCart[plant.name] ? 'Added' : 'Add to Cart'}
+</button>
+
         </div>
       ))}
     </div>
