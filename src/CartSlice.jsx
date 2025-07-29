@@ -32,6 +32,9 @@ export const CartSlice = createSlice({
 
 // ✅ Export action creators for use in components
 export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
+// In CartSlice.js or a selectors file
+export const selectTotalItems = (state) =>
+  state.cart.items.reduce((total, item) => total + item.quantity, 0);
 
-// ✅ Export reducer for use in store.js
+
 export default CartSlice.reducer;
